@@ -19,7 +19,7 @@ export class DataLayer {
     private async findInDataLayer(eventQuery: DataLayerEvent): Promise<DataLayerEvent[]> {
         const checkIsQueryPassed = (e: DataLayerEvent): boolean => deepMatch(e, eventQuery);
         return (await this.eventsReversed)
-            .map(({ 'gtm.uniqueEventId': eventId, ...keepAtr }) => keepAtr)
+            .map(({ 'gtm.uniqueEventId': eventId, ...keepAtr }) => keepAtr)            
             .filter(checkIsQueryPassed);
     }
 

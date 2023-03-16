@@ -18,6 +18,14 @@
         },
         "strict": true
     },
-    "include": ["src", "tests", ".eslintrc.js", "playwright.config.ts", "typescript"],
+    "include": [
+        "src",
+        "testsa",
+        ".eslintrc.js",
+        "playwright.config.ts",
+        "typescript",
+        "tests/cart/itemControls.test.ts",
+        "tests/analytics/checkoutSidereview.test.ts"
+    ],
     "exclude": ["node_modules"]
 }

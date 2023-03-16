@@ -11,7 +11,7 @@ module.exports = {
         '@typescript-eslint/await-thenable': 'error',
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/require-await': 'error',
-        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',    
         '@typescript-eslint/naming-convention': [
             'error',
             {

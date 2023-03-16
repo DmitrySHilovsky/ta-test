@@ -6,7 +6,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
     testDir: './tests',
     /* Maximum time one test can run for. */
-    timeout: 120 * 1000,
+    timeout: 70 * 1000,
     expect: {
         timeout: 5000,
     },
@@ -23,8 +23,8 @@ export default defineConfig({
         trace: 'retain-on-failure',
         ignoreHTTPSErrors: true,
         launchOptions: {
-            devtools: true,
-            args: ['--start-maximized'],
+            devtools: false,
+            args: ['--start-fullscreen'],
         },
     },
     projects: [
