@@ -20,4 +20,11 @@ export class CartList extends Component {
         });
         return sum;
     }
+
+    public async removeAllItems() {
+        const cartItemList = await this.getCartItems();
+        await forEachSeries(cartItemList, async item => {
+            await item.clickButtonRemove();
+        });
+    }
 }

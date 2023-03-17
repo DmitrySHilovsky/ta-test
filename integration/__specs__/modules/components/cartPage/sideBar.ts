@@ -1,7 +1,9 @@
 import { Component } from '@Core/component';
 
 const SELECTORS = {
-    totalPrice: '//div[contains(@class,"summary")]/p',
+    totalPrice: './/div[contains(@class,"summary")]/p',
+    buttonProceedToCheckoutDisabled: './/button[@disabled and text()="Proceed to Checkout"]', //??????????????????????????????/
+    buttonProceedToCheckOut: './/button[text()="Proceed to Checkout"]',
 };
 
 export class SideBar extends Component {

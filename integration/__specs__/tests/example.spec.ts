@@ -29,10 +29,19 @@ describe('Cart page content', () => {
         const cartList = await cartPage.getCartList();
 
         // Получаем сумму всех Subtotal
-        const subtotalPriceAllProducts = await cartList.getSumSubTotalPrice();
+        const sumSubtotalPriceAllProducts = await cartList.getSumSubTotalPrice();
 
-        expect(subtotalPriceAllProducts).toBe(totalPrice);
+        expect(totalPrice).toBe(sumSubtotalPriceAllProducts);
     });
+    test('', async () => {
+        mock.addMocks(new GetCartProductsMock());
+        await cartPage.fulfill();
+        const sideBar = cartPage.getSideBar();
+        const cartList = await cartPage.getCartList();
+        // кликаем везде на ремув
+        await cartList.removeAllItems();
+    });
+
     // test('Empty cart', async () => {
     //     // Open cart page
     //     //     add mock
