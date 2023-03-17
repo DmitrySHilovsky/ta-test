@@ -1,6 +1,5 @@
 import { Wizard } from '@Components/productPage/wizard';
 import { Container } from '@Core/container';
-import { timeout } from '@Utils/timeout';
 
 export class ProductPage extends Container {
     protected LOCATORS = {

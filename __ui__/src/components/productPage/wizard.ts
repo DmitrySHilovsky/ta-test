@@ -14,11 +14,6 @@ export class Wizard extends Component {
         buttonContinue: this.locator.locator('//button[contains(., "Continue")]'),
         buttonNoThanks: this.locator.locator('//button[contains(.,"No Thanks")]'),
         buttonAddToCart: this.locator.locator('//button[contains(.,"Add to Cart")]'),
-        // backToPrev: this.locator.locator('//button[text() = "Back"]'),
-        // buttonHydrophobic: this.locator.locator('input[value="Super Hydrophobic"]'),
-        // buttonPopUpOpen: this.locator.locator(
-        //     '//div[@role="presentation"]//span[@aria-label="Help"]'
-        // ),
     };
 
     public async buttonNonPrescriptionClick(): Promise<void> {
@@ -48,16 +43,6 @@ export class Wizard extends Component {
     public async buttonAddToCartClick() {
         await this.LOCATORS.buttonAddToCart.waitFor();
         await this.LOCATORS.buttonAddToCart.click();
+        await this.page.waitForLoadState();
     }
-    // public async backToPrevClick(): Promise<void> {
-    //     await this.LOCATORS.backToPrev.click();
-    // }
-
-    // public async buttonHydrophobicClick(): Promise<void> {
-    //     await this.LOCATORS.buttonHydrophobic.click();
-    // }
-
-    // public async buttonPopUpOpenClick(): Promise<void> {
-    //     await this.LOCATORS.buttonPopUpOpen.click();
-    // }
 }
