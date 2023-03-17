@@ -1,4 +1,5 @@
 import { expect, test } from '@Test';
+import { timeout } from '@Utils/timeout';
 
 test.describe.only('Item controls on cart page', () => {
     test('?????????????????????????', async ({ categoryPage, productPage, cartPage }) => {
@@ -17,30 +18,37 @@ test.describe.only('Item controls on cart page', () => {
         await productPage.wizard.buttonAddToCartClick();
         // На странице корзины проверить:
         // При увеличении количества цена меняется и отображается корректно в subtotal.
-        test.step('?????????????????????????', async () => {
+        await test.step('?????????????????????????', async () => {
             const expectedTotalPrice = (await cartPage.cartItem.getTotalPrice()) * 2;
             await cartPage.cartItem.buttonPlusQuantityClick();
+
+            await timeout(5000); // нужон норм вэйтер!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
             const subtotal = await cartPage.mentionMe.getSumarySubtotal();
 
-            await expect(async () => {
-                expect(expectedTotalPrice).toBe(subtotal);
-            }).toPass();
+            expect(expectedTotalPrice).toBe(subtotal);
         });
         // При уменьшении количества цена меняется и отображается корректно в subtotal.
-        test.step('?????????????????????????', async () => {
+        await test.step('?????????????????????????', async () => {
             const expectedTotalPrice = await cartPage.cartItem.getTotalPrice();
             await cartPage.cartItem.buttonMinusQuantityClick();
+
+            await timeout(5000); // нужон норм вэйтер!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
             const subtotal = await cartPage.mentionMe.getSumarySubtotal();
-            await expect(async () => {
-                expect(expectedTotalPrice).toBe(subtotal);
-            }).toPass();
+
+            expect(expectedTotalPrice).toBe(subtotal);
         });
         // При удалении корзины должна быть пустой.
-        test.step('?????????????????????????', async () => {
+        await test.step('?????????????????????????', async () => {
             await cartPage.cartItem.buttonRemoveClick();
             // кликнуть на кнопку да
+            await cartPage.cartItem.buttonConfirmRemoveClick();
+
+            await timeout(5000); // нужон норм вэйтер!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             const expectText = await cartPage.getTextEmptyCartTitle();
+
             expect(expectText).toBe('Shopping Cart is Empty');
         });
     });

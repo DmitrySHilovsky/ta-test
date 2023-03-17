@@ -10,6 +10,7 @@ export class CartItem extends Component {
         buttonPlusQuantity: this.locator.locator('//button[contains(.,"+")]'),
         buttonMinusQuantity: this.locator.locator('//button[contains(.,"-")]'),
         buttonRemove: this.locator.locator('//button[contains(.,"Remove")]'),
+        buttonConfirmRemove: this.locator.locator('//button[contains(.,"Yes")]'),
     };
 
     public async buttonPlusQuantityClick() {
@@ -27,7 +28,12 @@ export class CartItem extends Component {
         await this.page.waitForLoadState();
     }
 
+    public async buttonConfirmRemoveClick() {
+        await this.LOCATORS.buttonConfirmRemove.click();
+        await this.page.waitForLoadState();
+    }
+
     public async getTotalPrice(): Promise<number> {
-        return dollarsToNumber(this.LOCATORS.totalPrice);
+        return await dollarsToNumber(this.LOCATORS.totalPrice);
     }
 }

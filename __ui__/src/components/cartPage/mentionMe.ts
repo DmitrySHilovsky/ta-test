@@ -10,6 +10,6 @@ export class MentionMe extends Component {
     };
 
     public async getSumarySubtotal(): Promise<Number> {
-        return dollarsToNumber(this.LOCATORS.sumarySubtotal);
+        return await dollarsToNumber(this.LOCATORS.sumarySubtotal);
     }
 }
