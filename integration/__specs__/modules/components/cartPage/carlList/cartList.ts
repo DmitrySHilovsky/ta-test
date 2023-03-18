@@ -16,6 +16,7 @@ export class CartList extends Component {
     public async getSumSubTotalPrice(): Promise<number> {
         const cartItemList = await this.getCartItems();
         let sum: number = 0;
+
         await forEachSeries(cartItemList, async item => {
             sum += await item.getSubTotalPrice();
         });

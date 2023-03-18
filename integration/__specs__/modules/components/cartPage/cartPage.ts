@@ -29,15 +29,4 @@ export class CartPageContainer extends Container {
     public isEmpty() {
         return Boolean(document.$x(SELECTORS.emptyCart));
     }
-
-    // public async openNewCartPopUp(): Promise<NewCartPopUp> {
-    //     await document.clickByXpath(SELECTORS.buttonAddCartItem);
-    //     const popUpElement = document.$x(SELECTORS.newCartPopUp);
-    //     return new NewCartPopUp(popUpElement);
-    // }
-
-    // public async getItemQuantity(): Promise<number> {
-    //     const [itemQuantity] = await this.element.waitForXpath(SELECTORS.itemQuantity);
-    //     return Number(itemQuantity.textContent);
-    // }
 }
