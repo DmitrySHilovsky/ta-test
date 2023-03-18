@@ -12,6 +12,6 @@ export class PaymentStep extends Component {
         ),
     };
 
-    public creditCard = new CreditCard(this.LOCATORS.creditCard, this.page);
-    public cachOnDelivery = new CashOnDelivery(this.LOCATORS.cachOnDelivery, this.page);
+    public CreditCard = new CreditCard(this.LOCATORS.creditCard, this.page);
+    public CachOnDelivery = new CashOnDelivery(this.LOCATORS.cachOnDelivery, this.page);
 }

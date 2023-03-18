@@ -6,11 +6,11 @@ export class CashOnDelivery extends Component {
         buttonPlaceOrder: this.locator.locator('//button[contains(.,"Place Order")]'),
     };
 
-    public async buttonRadioClick(): Promise<void> {
+    public async clickButtonRadio(): Promise<void> {
         await this.LOCATORS.buttonRadio.click();
     }
 
-    public async buttonPlaceOrderClick(): Promise<void> {
+    public async clickButtonPlaceOrder(): Promise<void> {
         await Promise.all([this.LOCATORS.buttonPlaceOrder.click()]);
     }
 }

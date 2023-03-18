@@ -1,19 +1,19 @@
 import { test } from '@Test';
 
 test.describe('"CheckoutNonInteraction" "Error" events', () => {
-    const expectedEventCreditCard = {
+    const expectedEventActionCreditCard = {
         event: 'CheckoutNonInteraction',
         eventAction: 'Step 2 - Credit card',
         eventCategory: 'Checkout - D',
     };
 
-    const expectedEventPayment = {
+    const expectedEventActionPayment = {
         event: 'CheckoutInteraction',
         eventCategory: 'Checkout - D',
         eventAction: 'Step 2 - Payment',
     };
 
-    test('Checking datalayer event for incorrect and correct data:', async ({
+    test('Checking datalayer event for incorrect and correct data', async ({
         dataLayer,
         categoryPage,
         productPage,
@@ -21,51 +21,51 @@ test.describe('"CheckoutNonInteraction" "Error" events', () => {
         thankYouPage,
     }) => {
         await categoryPage.open('sunglasses');
+
         await categoryPage.clickFirstProduct();
         await productPage.clickAddToCartButton();
-        await checkoutPage.buttonProceedToCheckout();
+        await checkoutPage.clickButtonProceedToCheckout();
         await checkoutPage.DeliveryStep.Form.fillForm();
-        await checkoutPage.DeliveryStep.buttonContinueClick();
+        await checkoutPage.DeliveryStep.clickButtonContinue();
 
-        await test.step('Wrong credit card number', async () => {
-            const verifyEvent = dataLayer.createEventVerifier(expectedEventCreditCard);
+        await test.step('Checking event after fill wrong credit card number', async () => {
+            const verifyEvent = dataLayer.createEventVerifier(expectedEventActionCreditCard);
 
-            await checkoutPage.PaymentStep.creditCard.fillField(
+            await checkoutPage.PaymentStep.CreditCard.fillField(
                 'card-number',
                 '4222 2222 2222 2222'
             );
-            await checkoutPage.PaymentStep.creditCard.buttonPlaceOrderClick();
+            await checkoutPage.PaymentStep.CreditCard.clickButtonPlaceOrder();
 
             await verifyEvent('Error – Please enter a valid credit card number');
         });
 
-        await test.step('Correct credit card number, leaving the date field and cvv empty', async () => {
-            const verifyEvent = dataLayer.createEventVerifier(expectedEventCreditCard);
+        await test.step('Checking event after fill correct credit card number, leaving the date field and cvv empty', async () => {
+            const verifyEvent = dataLayer.createEventVerifier(expectedEventActionCreditCard);
 
-            await checkoutPage.PaymentStep.creditCard.fillField(
+            await checkoutPage.PaymentStep.CreditCard.fillField(
                 'card-number',
                 '4111 1111 1111 1111'
             );
-            await checkoutPage.PaymentStep.creditCard.buttonPlaceOrderClick();
+            await checkoutPage.PaymentStep.CreditCard.clickButtonPlaceOrder();
 
             await verifyEvent('Error – Please enter a valid expiration date');
         });
 
         await test.step('Correct credit card number and date, leaving the field "CVV" empty', async () => {
-            const verifyEvent = dataLayer.createEventVerifier(expectedEventCreditCard);
-            // Ввести корректные ММ/ГГ, CVV оставить пустым.
-            await checkoutPage.PaymentStep.creditCard.fillField('exp-date', '1224');
-            await checkoutPage.PaymentStep.creditCard.buttonPlaceOrderClick();
-            // Поймать эвент:
-            // eventLabel: "Error – Please enter your card's security code (CVV/CID)"
+            const verifyEvent = dataLayer.createEventVerifier(expectedEventActionCreditCard);
+
+            await checkoutPage.PaymentStep.CreditCard.fillField('exp-date', '1224');
+            await checkoutPage.PaymentStep.CreditCard.clickButtonPlaceOrder();
+
             await verifyEvent(`Error – Please enter your card's security code (CVV/CID)`);
         });
 
         await test.step('Without filling in CVV choose Cash on delivery', async () => {
-            const verifyEvent = dataLayer.createEventVerifier(expectedEventPayment);
+            const verifyEvent = dataLayer.createEventVerifier(expectedEventActionPayment);
 
-            await checkoutPage.PaymentStep.cachOnDelivery.buttonRadioClick();
-            await checkoutPage.PaymentStep.cachOnDelivery.buttonPlaceOrderClick();
+            await checkoutPage.PaymentStep.CachOnDelivery.clickButtonRadio();
+            await checkoutPage.PaymentStep.CachOnDelivery.clickButtonPlaceOrder();
 
             await thankYouPage.waitModal();
             await verifyEvent('CTA - Place Order - Cash On Delivery');

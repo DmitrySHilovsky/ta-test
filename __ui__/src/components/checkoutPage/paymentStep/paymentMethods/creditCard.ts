@@ -15,7 +15,7 @@ export class CreditCard extends Component {
         await this.getLocatorField(attributeName).fill(data);
     }
 
-    public async buttonPlaceOrderClick() {
+    public async clickButtonPlaceOrder() {
         await this.LOCATORS.buttonPlaceOrder.click();
         await this.page.waitForLoadState('domcontentloaded');
     }

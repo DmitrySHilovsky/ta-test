@@ -11,7 +11,7 @@ export class DeliveryStep extends Component {
 
     public Form = new Form(this.LOCATORS.form, this.page);
 
-    public async buttonContinueClick(): Promise<void> {
+    public async clickButtonContinue(): Promise<void> {
         await Promise.all([
             this.LOCATORS.buttonContinue.click(),
             this.page.waitForLoadState('domcontentloaded'),
