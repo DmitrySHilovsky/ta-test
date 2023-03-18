@@ -1,7 +1,8 @@
 import { Container } from '@Core/container';
-import type { CartStateType } from 'frontend/store/types';
 import { SideBar } from './sideBar';
 import { CartList } from './carlList/cartList';
+
+import type { CartStateType } from 'frontend/store/types';
 
 const SELECTORS = {
     title: '//h1[contains(.,"Shopping cart")]',

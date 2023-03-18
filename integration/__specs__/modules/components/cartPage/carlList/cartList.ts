@@ -1,6 +1,7 @@
 import { Component } from '@Core/component';
 import { CartItem } from './cartItem/cartItem';
 import { forEachSeries } from 'p-iteration';
+import { checkDataLayerEvent } from '@Utils/checkDataLayerEvent';
 
 const SELECTORS = {
     cartItem: './/div[contains(@class,"CartItemCard")]',
@@ -21,10 +22,16 @@ export class CartList extends Component {
         return sum;
     }
 
-    public async removeAllItems() {
+    public async removeAllItemsAndCheckRemoveEvents() {
         const cartItemList = await this.getCartItems();
         await forEachSeries(cartItemList, async item => {
+            const currentItemName = await item.getItemName();
+
+            window.dataLayer = [];
+
             await item.clickButtonRemove();
+
+            checkDataLayerEvent('Remove item', currentItemName);
         });
     }
 }

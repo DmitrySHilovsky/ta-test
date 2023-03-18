@@ -39,7 +39,7 @@ describe('Cart page content', () => {
         const sideBar = cartPage.getSideBar();
         const cartList = await cartPage.getCartList();
         // кликаем везде на ремув
-        await cartList.removeAllItems();
+        await cartList.removeAllItemsAndCheckRemoveEvents();
     });
 
     // test('Empty cart', async () => {

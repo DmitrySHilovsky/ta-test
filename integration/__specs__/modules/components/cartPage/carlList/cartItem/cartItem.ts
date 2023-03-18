@@ -4,6 +4,7 @@ const SELECTORS = {
     buttonAdd: './/button[text()="+"]',
     buttonRemove: './/button[text()="Remove"]',
     itemQuantity: './/div[@data-testid="quantity-current"]',
+    itemName: './/h3[contains(@class,"HeaderTitle")]',
     subTotalPrice: './/p[contains(.,"Subtotal")]',
 };
 
@@ -21,6 +22,11 @@ export class CartItem extends Component {
         const [subTotalPrice] = await this.element.waitForXpath(SELECTORS.subTotalPrice);
         const subTotalPriceString = subTotalPrice.textContent.trim().replace(/\D/g, '');
         return parseInt(subTotalPriceString);
+    }
+
+    public async getItemName(): Promise<string> {
+        const [name] = await this.element.waitForXpath(SELECTORS.itemName);
+        return name.textContent.trim();
     }
 
     public async clickButtonRemove(): Promise<void> {
