@@ -13,34 +13,29 @@ test.describe('"CheckoutNonInteraction" "Error" events', () => {
         eventAction: 'Step 2 - Payment',
     };
 
-    test('checking for incorrect and correct data', async ({
+    test('Checking datalayer event for incorrect and correct data:', async ({
         dataLayer,
         categoryPage,
         productPage,
         checkoutPage,
         thankYouPage,
     }) => {
-        // Перейти со страницы солнцезащитных очков на продукт.
         await categoryPage.open('sunglasses');
         await categoryPage.clickFirstProduct();
-        // Нажать Add To Cart.
         await productPage.clickAddToCartButton();
-        // На странице корзины нажать Proceed to Checkout.
         await checkoutPage.buttonProceedToCheckout();
-        // И пройти до шага оплаты.
         await checkoutPage.DeliveryStep.Form.fillForm();
         await checkoutPage.DeliveryStep.buttonContinueClick();
 
         await test.step('Wrong credit card number', async () => {
             const verifyEvent = dataLayer.createEventVerifier(expectedEventCreditCard);
-            //Ввести неправильный номер карты(4222 2222 2222 2222) или оставить поле пустым.
+
             await checkoutPage.PaymentStep.creditCard.fillField(
                 'card-number',
                 '4222 2222 2222 2222'
             );
             await checkoutPage.PaymentStep.creditCard.buttonPlaceOrderClick();
-            // Поймать эвент:
-            // eventLabel: "Error – Please enter a valid credit card number"
+
             await verifyEvent('Error – Please enter a valid credit card number');
         });
 
