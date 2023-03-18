@@ -1,14 +1,16 @@
 import { Component } from '@Core/component';
 import { delay } from '@Utils/delay';
 
+const DELAY_RENDERING = 100;
+
 const SELECTORS = {
     totalPrice: './/div[contains(@class,"summary")]/p',
-    buttonProceedToCheckoutDisabled: './/button[@disabled and text()="Proceed to Checkout"]', //??????????????????????????????/
+    buttonProceedToCheckoutDisabled: './/button[@disabled and text()="Proceed to Checkout"]',
     buttonProceedToCheckOut: './/button[text()="Proceed to Checkout"]',
+    buttonAddNewItem: './/button[text()="Add new item"]',
     inputFieldName: './/input[@placeholder="name"]',
     inputFiledPrice: './/input[@placeholder="price"]',
     inputFieldQuantity: './/input[@placeholder="quantity"]',
-    buttonAddNewItem: '//button[text()="Add new item"]',
 };
 
 export class SideBar extends Component {
@@ -18,7 +20,7 @@ export class SideBar extends Component {
         return parseInt(totalPriceString);
     }
 
-    public buttonProccesToCheckOutisDisabled(): boolean {
+    public isDisabledButtonProccesToCheckOut(): boolean {
         return Boolean(document.$x(SELECTORS.buttonProceedToCheckoutDisabled));
     }
 
@@ -26,11 +28,12 @@ export class SideBar extends Component {
         await this.element.fillByXpath(SELECTORS.inputFieldName, 'Orange');
         await this.element.fillByXpath(SELECTORS.inputFiledPrice, '10');
         await this.element.fillByXpath(SELECTORS.inputFieldQuantity, '3');
+
         await this.element.clickByXpath(SELECTORS.buttonAddNewItem);
-        await delay(100);
+        await delay(DELAY_RENDERING);
     }
 
-    public async proceedToCheckOutClick(): Promise<void> {
+    public async clickProceedToCheckOut(): Promise<void> {
         await this.element.clickByXpath(SELECTORS.buttonProceedToCheckOut);
     }
 }

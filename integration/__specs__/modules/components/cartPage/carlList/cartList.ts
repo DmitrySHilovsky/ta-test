@@ -25,6 +25,7 @@ export class CartList extends Component {
 
     public async removeAllItemsAndCheckRemoveEvents() {
         const cartItemList = await this.getCartItems();
+
         await forEachSeries(cartItemList, async item => {
             const currentItemName = await item.getItemName();
 
