@@ -1,7 +1,7 @@
 import { Component } from '@Core/component';
 
 export class Wizard extends Component {
-    protected LOCATORS = {
+    private LOCATORS = {
         buttonNonPrescription: this.locator.locator(
             '//div[@role="button" and contains(., "Non-prescription")]'
         ),
@@ -17,12 +17,10 @@ export class Wizard extends Component {
     };
 
     public async clickButtonNonPrescription(): Promise<void> {
-        await this.LOCATORS.buttonNonPrescription.waitFor();
         await this.LOCATORS.buttonNonPrescription.click();
     }
 
     public async clickButtonValueLens(): Promise<void> {
-        await this.LOCATORS.buttonValueLens.waitFor();
         await this.LOCATORS.buttonValueLens.click();
     }
 
@@ -31,17 +29,14 @@ export class Wizard extends Component {
     }
 
     public async clickButtonClearLens(): Promise<void> {
-        await this.LOCATORS.buttonClearLens.waitFor();
         await this.LOCATORS.buttonClearLens.click();
     }
 
     public async clickButtonNoThanks(): Promise<void> {
-        await this.LOCATORS.buttonNoThanks.waitFor();
         await this.LOCATORS.buttonNoThanks.click();
     }
 
     public async clickButtonAddToCart(): Promise<void> {
-        await this.LOCATORS.buttonAddToCart.waitFor();
         await this.LOCATORS.buttonAddToCart.click();
         await this.page.waitForLoadState();
     }

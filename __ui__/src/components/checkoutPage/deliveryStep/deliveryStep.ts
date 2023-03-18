@@ -2,7 +2,7 @@ import { Component } from '@Core/component';
 import { Form } from './form/form';
 
 export class DeliveryStep extends Component {
-    protected LOCATORS = {
+    private LOCATORS = {
         form: this.locator.locator(
             '//form[@name="CheckoutDeliveryForm"]/div/div[@aria-hidden="false"]'
         ),

@@ -1,7 +1,7 @@
 import { Component } from '@Core/component';
 
 export class CashOnDelivery extends Component {
-    protected LOCATORS = {
+    private LOCATORS = {
         buttonRadio: this.locator.locator('//input[@type="radio"]'),
         buttonPlaceOrder: this.locator.locator('//button[contains(.,"Place Order")]'),
     };

@@ -3,7 +3,7 @@ import { forEachSeries } from 'p-iteration';
 import faker from 'faker';
 
 export class Form extends Component {
-    protected LOCATORS = {
+    private LOCATORS = {
         input: (attributeName: string) => this.locator.locator(`//input[@name="${attributeName}"]`),
         selectState: this.locator.locator('//select[@name="state"]'),
         selectCountry: this.locator.locator('//select[@name="country"]'),
