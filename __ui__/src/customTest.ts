@@ -6,8 +6,6 @@ import { CheckoutPage } from '@Pages/checkoutPage';
 import { ProductPage } from '@Pages/productPage';
 import { ThankYouPage } from '@Pages/thankYouPage';
 
-// Добавить недоставющие страницы в фикстуры и типы
-
 type Options = {
     dataLayer: DataLayer;
     cartPage: CartPage;

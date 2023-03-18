@@ -1,7 +1,7 @@
 import { Container } from '@Core/container';
 
 export class ThankYouPage extends Container {
-    protected LOCATORS = {
+    private LOCATORS = {
         ModalReferrer: this.page.locator('//div[@id="mmModalReferrerStage1"]'),
     };
 

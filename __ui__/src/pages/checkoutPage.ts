@@ -3,7 +3,7 @@ import { DeliveryStep } from '@Components/checkoutPage/deliveryStep/deliveryStep
 import { PaymentStep } from '@Components/checkoutPage/paymentStep/paymentStep';
 
 export class CheckoutPage extends Container {
-    protected LOCATORS = {
+    private LOCATORS = {
         buttonProceedToCheckout: this.page.locator('//div[@data-test-name="proceedToCheckoutBtn"]'),
         deliveryStep: this.page.locator('//div[@name="deliveryStep"]'),
         paymentStep: this.page.locator('//div[@name="paymentStep"]'),

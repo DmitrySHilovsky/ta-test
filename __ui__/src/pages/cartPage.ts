@@ -1,9 +1,9 @@
+import { Container } from '@Core/container';
 import { CartItem } from '@Components/cartPage/cartItem';
 import { MentionMe } from '@Components/cartPage/mentionMe';
-import { Container } from '@Core/container';
 
 export class CartPage extends Container {
-    protected LOCATORS = {
+    private LOCATORS = {
         cartItem: this.page.locator('//li[@data-test-name="cartItem"]'),
         mentionMe: this.page.locator('//div[@data-test-name="mentionMeContainer"]'),
         emptyCartTitle: this.page.locator('//h2[contains(.,"Shopping Cart is Empty")]'),

@@ -1,7 +1,7 @@
 import { Container } from '@Core/container';
 
 export class CategoryPage extends Container {
-    protected LOCATORS = {
+    private LOCATORS = {
         products: this.page.locator('[data-test-name="product"]'),
     };
 
@@ -12,10 +12,7 @@ export class CategoryPage extends Container {
     }
 
     public async clickFirstProduct(): Promise<void> {
-        const arrayProducts = await this.LOCATORS.products.all();
-        await Promise.all([
-            arrayProducts[0].click(),
-            this.page.waitForLoadState('domcontentloaded'),
-        ]);
+        const [arrayProducts] = await this.LOCATORS.products.all();
+        await Promise.all([arrayProducts.click(), this.page.waitForLoadState('domcontentloaded')]);
     }
 }

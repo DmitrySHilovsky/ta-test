@@ -10,13 +10,13 @@ test.describe('Item controls on cart page', () => {
 
         await categoryPage.clickFirstProduct();
         await productPage.clickChooseLensesButton();
-        await productPage.wizard.clickButtonNonPrescription();
-        await productPage.wizard.clickButtonValueLens();
-        await productPage.wizard.clickButtonContinue();
-        await productPage.wizard.clickButtonClearLens();
-        await productPage.wizard.clickButtonContinue();
-        await productPage.wizard.clickButtonNoThanks();
-        await productPage.wizard.clickButtonAddToCart();
+        await productPage.Wizard.clickButtonNonPrescription();
+        await productPage.Wizard.clickButtonValueLens();
+        await productPage.Wizard.clickButtonContinue();
+        await productPage.Wizard.clickButtonClearLens();
+        await productPage.Wizard.clickButtonContinue();
+        await productPage.Wizard.clickButtonNoThanks();
+        await productPage.Wizard.clickButtonAddToCart();
 
         await test.step('Сhecking the change in the amount payable after the increase', async () => {
             const expectedTotalPrice = (await cartPage.CartItem.getTotalPrice()) * 2;
