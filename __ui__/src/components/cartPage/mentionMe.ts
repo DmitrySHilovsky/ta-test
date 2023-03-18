@@ -3,13 +3,10 @@ import { dollarsToNumber } from '@Utils/converter';
 
 export class MentionMe extends Component {
     protected LOCATORS = {
-        sumarySubtotal: this.locator.locator('//div[@id="summary_subtotal"]'),
-        sumaryDiscount: this.locator.locator('//div[@id="summary_discount"]'),
-        sumaryShipingPrice: this.locator.locator('//div[@id="summary_shipping_price"]'),
-        grandTotalPrice: this.locator.locator('//span[@id="summary_grand_total"]'),
+        summarySubtotal: this.locator.locator('//div[@id="summary_subtotal"]'),
     };
 
     public async getSummarySubtotal(): Promise<Number> {
-        return await dollarsToNumber(this.LOCATORS.sumarySubtotal);
+        return await dollarsToNumber(this.LOCATORS.summarySubtotal);
     }
 }

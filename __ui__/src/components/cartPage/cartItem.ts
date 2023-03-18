@@ -1,33 +1,31 @@
 import { Component } from '@Core/component';
 import { dollarsToNumber } from '@Utils/converter';
 
+const ENDPOINT_GET_QUOTE = '/backend/optimaxcart/react/getQuote?version=v2.0';
+
 export class CartItem extends Component {
-    protected LOCATORS = {
+    private LOCATORS = {
         totalPrice: this.locator.locator(
             '//div[@data-test-name="frameInfo"]//span[@data-test-name="totalPrice"]'
         ),
         quantity: this.locator.locator('//div[contains(@class,"counter__value")]'),
-        buttonPlusQuantity: this.locator.locator('//button[contains(.,"+")]'),
-        buttonMinusQuantity: this.locator.locator('//button[contains(.,"-")]'),
-        buttonRemove: this.locator.locator('//button[contains(.,"Remove")]'),
-        buttonConfirmRemove: this.locator.locator('//button[contains(.,"Yes")]'),
+        buttonPlusQuantity: this.locator.locator('//button[text()="+"]'),
+        buttonMinusQuantity: this.locator.locator('//button[text()="-"]'),
+        buttonRemove: this.locator.locator('//button[text()="Remove"]'),
+        buttonConfirmRemove: this.locator.locator('//button[text()="Yes"]'),
     };
 
     public async clickButtonPlusQuantity(): Promise<void> {
         await this.LOCATORS.buttonPlusQuantity.click();
         await this.page.waitForResponse(
-            (resp) =>
-                resp.url().includes('/backend/optimaxcart/react/getQuote?version=v2.0') &&
-                resp.status() === 200
+            (resp) => resp.url().includes(ENDPOINT_GET_QUOTE) && resp.status() === 200
         );
     }
 
     public async clickButtonMinusQuantity(): Promise<void> {
         await this.LOCATORS.buttonMinusQuantity.click();
         await this.page.waitForResponse(
-            (resp) =>
-                resp.url().includes('/backend/optimaxcart/react/getQuote?version=v2.0') &&
-                resp.status() === 200
+            (resp) => resp.url().includes(ENDPOINT_GET_QUOTE) && resp.status() === 200
         );
     }
 
