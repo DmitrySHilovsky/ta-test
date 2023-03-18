@@ -11,9 +11,6 @@ export class CashOnDelivery extends Component {
     }
 
     public async buttonPlaceOrderClick(): Promise<void> {
-        await Promise.all([
-            this.LOCATORS.buttonPlaceOrder.click(),
-            this.page.waitForLoadState('networkidle'),
-        ]);
+        await Promise.all([this.LOCATORS.buttonPlaceOrder.click()]);
     }
 }

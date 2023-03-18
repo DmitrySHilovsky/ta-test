@@ -21,7 +21,7 @@ export class Form extends Component {
         { locator: 'postal', value: '35242' },
     ];
 
-    public async fillForm() {
+    public async fillForm(): Promise<void> {
         await this.LOCATORS.loadingOverlay.waitFor();
         await this.LOCATORS.loadingOverlay.waitFor({ state: 'detached' });
 

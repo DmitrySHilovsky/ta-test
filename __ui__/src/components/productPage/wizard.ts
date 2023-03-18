@@ -35,12 +35,12 @@ export class Wizard extends Component {
         await this.LOCATORS.buttonClearLens.click();
     }
 
-    public async buttonNoThanksClick() {
+    public async buttonNoThanksClick(): Promise<void> {
         await this.LOCATORS.buttonNoThanks.waitFor();
         await this.LOCATORS.buttonNoThanks.click();
     }
 
-    public async buttonAddToCartClick() {
+    public async buttonAddToCartClick(): Promise<void> {
         await this.LOCATORS.buttonAddToCart.waitFor();
         await this.LOCATORS.buttonAddToCart.click();
         await this.page.waitForLoadState();

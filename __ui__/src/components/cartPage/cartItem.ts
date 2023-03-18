@@ -13,22 +13,30 @@ export class CartItem extends Component {
         buttonConfirmRemove: this.locator.locator('//button[contains(.,"Yes")]'),
     };
 
-    public async buttonPlusQuantityClick() {
+    public async buttonPlusQuantityClick(): Promise<void> {
         await this.LOCATORS.buttonPlusQuantity.click();
-        await this.page.waitForLoadState();
+        await this.page.waitForResponse(
+            (resp) =>
+                resp.url().includes('/backend/optimaxcart/react/getQuote?version=v2.0') &&
+                resp.status() === 200
+        );
     }
 
-    public async buttonMinusQuantityClick() {
+    public async buttonMinusQuantityClick(): Promise<void> {
         await this.LOCATORS.buttonMinusQuantity.click();
-        await this.page.waitForLoadState();
+        await this.page.waitForResponse(
+            (resp) =>
+                resp.url().includes('/backend/optimaxcart/react/getQuote?version=v2.0') &&
+                resp.status() === 200
+        );
     }
 
-    public async buttonRemoveClick() {
+    public async buttonRemoveClick(): Promise<void> {
         await this.LOCATORS.buttonRemove.click();
         await this.page.waitForLoadState();
     }
 
-    public async buttonConfirmRemoveClick() {
+    public async buttonConfirmRemoveClick(): Promise<void> {
         await this.LOCATORS.buttonConfirmRemove.click();
         await this.page.waitForLoadState();
     }

@@ -26,7 +26,7 @@ export class CartPageContainer extends Container {
         return new CartList(cartList);
     }
 
-    public isEmpty() {
+    public isEmpty(): boolean {
         return Boolean(document.$x(SELECTORS.emptyCart));
     }
 }
