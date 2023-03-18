@@ -37,7 +37,13 @@ export class Wizard extends Component {
     }
 
     public async clickButtonAddToCart(): Promise<void> {
-        await this.LOCATORS.buttonAddToCart.click();
-        await this.page.waitForLoadState();
+        await Promise.all([
+            this.page.waitForResponse(
+                (resp) =>
+                    resp.url().includes('backend/api/rest/optimaxcheckout/v2/cart/items') &&
+                    resp.status() === 201
+            ),
+            this.LOCATORS.buttonAddToCart.click(),
+        ]);
     }
 }

@@ -14,7 +14,15 @@ export class ProductPage extends Container {
 
     public async clickAddToCartButton(): Promise<void> {
         await this.LOCATORS.buttonReviews.waitFor();
-        await this.LOCATORS.buttonAddToCart.click();
+
+        Promise.all([
+            this.page.waitForResponse(
+                (resp) =>
+                    resp.url().includes('backend/api/rest/optimaxcheckout/v2/cart/items') &&
+                    resp.status() === 201
+            ),
+            this.LOCATORS.buttonAddToCart.click(),
+        ]);
     }
 
     public async clickChooseLensesButton(): Promise<void> {

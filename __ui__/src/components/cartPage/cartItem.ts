@@ -31,12 +31,10 @@ export class CartItem extends Component {
 
     public async clickButtonRemove(): Promise<void> {
         await this.LOCATORS.buttonRemove.click();
-        await this.page.waitForLoadState();
     }
 
     public async clickButtonConfirmRemove(): Promise<void> {
         await this.LOCATORS.buttonConfirmRemove.click();
-        await this.page.waitForLoadState();
     }
 
     public async getTotalPrice(): Promise<number> {
