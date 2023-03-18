@@ -1,26 +1,25 @@
-import { Component } from '@Core/component';
 import { Locator } from '@playwright/test';
+import { Component } from '@Core/component';
 
-type attributeType = 'card-number' | 'exp-date' | 'cvv';
+type AttributeType = 'card-number' | 'exp-date' | 'cvv';
 
 export class CreditCard extends Component {
-    protected LOCATORS = {
-        input: (attributeName: attributeType) =>
+    private LOCATORS = {
+        input: (attributeName: AttributeType) =>
             this.page.locator(`//input[@id="${attributeName}"]`),
         buttonPlaceOrder: this.locator.locator('//button[contains(.,"Place Order")]'),
-        fieldCardNumber: this.locator.locator('//*[@id="pan"]'),
     };
-
-    public async fillField(attributeName: attributeType, data: string) {
-        await this.getLocatorField(attributeName).fill(data);
-    }
 
     public async clickButtonPlaceOrder() {
         await this.LOCATORS.buttonPlaceOrder.click();
         await this.page.waitForLoadState('domcontentloaded');
     }
 
-    private getLocatorField(attributeName: attributeType): Locator {
+    public async fillField(attributeName: AttributeType, data: string) {
+        await this.getLocatorField(attributeName).fill(data);
+    }
+
+    private getLocatorField(attributeName: AttributeType): Locator {
         let iFrameLocator: string;
         switch (attributeName) {
             case 'card-number': {

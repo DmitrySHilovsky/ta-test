@@ -1,7 +1,6 @@
 import { Component } from '@Core/component';
-import { Locator } from '@playwright/test';
-import faker from 'faker';
 import { forEachSeries } from 'p-iteration';
+import faker from 'faker';
 
 export class Form extends Component {
     protected LOCATORS = {

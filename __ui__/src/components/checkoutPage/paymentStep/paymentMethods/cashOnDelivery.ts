@@ -11,6 +11,6 @@ export class CashOnDelivery extends Component {
     }
 
     public async clickButtonPlaceOrder(): Promise<void> {
-        await Promise.all([this.LOCATORS.buttonPlaceOrder.click()]);
+        await this.LOCATORS.buttonPlaceOrder.click();
     }
 }

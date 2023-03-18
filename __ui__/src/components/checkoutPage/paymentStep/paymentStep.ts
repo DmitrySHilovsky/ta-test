@@ -3,7 +3,7 @@ import { CashOnDelivery } from './paymentMethods/cashOnDelivery';
 import { CreditCard } from './paymentMethods/creditCard';
 
 export class PaymentStep extends Component {
-    protected LOCATORS = {
+    private LOCATORS = {
         creditCard: this.locator.locator(
             '//div[contains(@class,"paymentCreditCardWrapper__container")]'
         ),
