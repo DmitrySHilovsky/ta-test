@@ -16,31 +16,31 @@ export class Wizard extends Component {
         buttonAddToCart: this.locator.locator('//button[contains(.,"Add to Cart")]'),
     };
 
-    public async buttonNonPrescriptionClick(): Promise<void> {
+    public async clickButtonNonPrescription(): Promise<void> {
         await this.LOCATORS.buttonNonPrescription.waitFor();
         await this.LOCATORS.buttonNonPrescription.click();
     }
 
-    public async buttonValueLensClick(): Promise<void> {
+    public async clickButtonValueLens(): Promise<void> {
         await this.LOCATORS.buttonValueLens.waitFor();
         await this.LOCATORS.buttonValueLens.click();
     }
 
-    public async buttonContinueClick(): Promise<void> {
+    public async clickButtonContinue(): Promise<void> {
         await this.LOCATORS.buttonContinue.click();
     }
 
-    public async buttonClearLensClick(): Promise<void> {
+    public async clickButtonClearLens(): Promise<void> {
         await this.LOCATORS.buttonClearLens.waitFor();
         await this.LOCATORS.buttonClearLens.click();
     }
 
-    public async buttonNoThanksClick(): Promise<void> {
+    public async clickButtonNoThanks(): Promise<void> {
         await this.LOCATORS.buttonNoThanks.waitFor();
         await this.LOCATORS.buttonNoThanks.click();
     }
 
-    public async buttonAddToCartClick(): Promise<void> {
+    public async clickButtonAddToCart(): Promise<void> {
         await this.LOCATORS.buttonAddToCart.waitFor();
         await this.LOCATORS.buttonAddToCart.click();
         await this.page.waitForLoadState();

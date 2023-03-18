@@ -9,8 +9,8 @@ export class CartPage extends Container {
         emptyCartTitle: this.page.locator('//h2[contains(.,"Shopping Cart is Empty")]'),
     };
 
-    public cartItem = new CartItem(this.LOCATORS.cartItem, this.page);
-    public mentionMe = new MentionMe(this.LOCATORS.mentionMe, this.page);
+    public CartItem = new CartItem(this.LOCATORS.cartItem, this.page);
+    public MentionMe = new MentionMe(this.LOCATORS.mentionMe, this.page);
 
     public async getTextEmptyCartTitle(): Promise<string> {
         return (await this.LOCATORS.emptyCartTitle.innerText()).trim();

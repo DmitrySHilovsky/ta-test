@@ -9,7 +9,7 @@ export class MentionMe extends Component {
         grandTotalPrice: this.locator.locator('//span[@id="summary_grand_total"]'),
     };
 
-    public async getSumarySubtotal(): Promise<Number> {
+    public async getSummarySubtotal(): Promise<Number> {
         return await dollarsToNumber(this.LOCATORS.sumarySubtotal);
     }
 }
