@@ -7,7 +7,7 @@ import { formatPrice } from '@Utils/formatPrice';
 describe('Cart page content', () => {
     const cartPage = new CartPageContainer();
     const mock = Mock.getInstance();
-    test('Check total price all products, check datalayer event after remove all items from cart, check for empty cart label, zero price & disabled "Proceed to Checkout" button, Check "Proceed to Checkout" event after create new item', async () => {
+    test('Checking total price all products, removing all items from cart and checking datalayer events after remove products', async () => {
         mock.addMocks(new GetCartProductsMock());
         await cartPage.fulfill();
 
@@ -22,7 +22,7 @@ describe('Cart page content', () => {
         reporter.endStep();
 
         reporter.startStep(
-            `Check 'Remove' event & check for empty cart label, zero price & disabled "Proceed to Checkout" button - after remove all items in cart`
+            `Checking 'Remove' event & checking for empty cart label, zero price & disabled "Proceed to Checkout" button - after remove all items in cart`
         );
         await cartList.removeAllItemsAndCheckRemoveEvents();
 
@@ -34,7 +34,7 @@ describe('Cart page content', () => {
         expect(sideBar.isDisabledButtonProccesToCheckOut()).toBe(true);
         reporter.endStep();
 
-        reporter.startStep(`Check "Proceed to Checkout" event after create new item`);
+        reporter.startStep(`Checking "Proceed to Checkout" event after create new item`);
         window.dataLayer = [];
         await sideBar.createNewItem();
 
