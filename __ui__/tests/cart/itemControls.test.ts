@@ -36,7 +36,7 @@ test.describe('Item controls on cart page', () => {
 
             expect(expectedTotalPrice).toBe(subtotal);
         });
-        // При удалении корзины должна быть пустой.
+
         await test.step('Сhecking that the cart is empty after deleting an item', async () => {
             await cartPage.cartItem.buttonRemoveClick();
             await cartPage.cartItem.buttonConfirmRemoveClick();
